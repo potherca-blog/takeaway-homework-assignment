@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+
+  <title>Takeaway Homework Assignment</title>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <link rel="stylesheet" href="./css/application.css"/>
+</head>
+
+<body>
+
+  <header class="navbar is-transparent">
+    <div class="navbar-brand">
+      <h1 class="navbar-item">
+        Takeaway Homework Assignment
+      </h1>
+    </div>
+
+    <nav class="navbar-menu is-active">
+      <div class="navbar-start">
+        <!-- Left-side items -->
+      </div>
+
+      <div class="navbar-end">
+          <p class="control navbar-item">
+            <a class="button">
+              <span>Favorites</span>
+              <span class="icon"><i class="fas fa-bookmark"></i></span>
+            </a>
+          </p>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Restaurants</h1>
+        <h2 class="subtitle">Let's sort this out!</h2>
+      </div>
+    </div>
+  </section>
+
+  <main class="container restaurants-container">
+    <div class="columns">
+
+      <div class="column is-one-quarter restaurants-filter">
+        <nav class="panel">
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input class="input" type="text" placeholder="search">
+              <span class="icon is-small is-left">
+                <i class="fas fa-search"></i>
+              </span>
+            </p>
+          </div>
+
+          <p class="panel-tabs">
+            <a class="is-active">all</a>
+            <a>open</a>
+            <a>order ahead</a>
+            <a>closed</a>
+          </p>
+
+          <p class="panel-heading">Sort Restaurants</p>
+
+          <a class="panel-block is-active">
+            <span class="panel-icon"><i class="fas fa-utensils"></i></span>
+            <span>Top Restaurant</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-crosshairs"></i></span>
+            <span>best match</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-shopping-basket"></i></span>
+            <span>average product price</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-truck"></i></span>
+            <span>delivery costs</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span>distance</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-money-bill-alt"></i></span>
+            <span>minimum costs</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-certificate"></i></span>
+            <span>newest</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="fas fa-thumbs-up"></i></span>
+            <span>popularity</span>
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon"><i class="far fa-star"></i></span>
+            <span>rating average</span>
+          </a>
+
+          <label class="panel-block">
+            <input type="checkbox">
+            <span>Only show Favorites</span>
+            <span class="icon"><i class="far fa-bookmark"></i></span>
+          </label>
+
+          <div class="panel-block">
+            <button class="button is-link is-outlined is-fullwidth">
+              reset filters
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <div class="column restaurants-list">
+          <article class="card restaurants-list__item">
+            <header class="card-header">
+              <h3 class="card-header-title">{{ restaurant-name }}</h3>
+            </header>
+            <div class="card-content">
+              <p>{{ restaurant-description }}</p>
+              <p>the selected sort</p>
+              <p>the sort value for a restaurant</p>
+            </div>
+            <footer class="card-footer">
+              <p class="card-footer-item">(open, order ahead, closed)</p>
+              <p class="card-footer-item">(star)</p>
+            </footer>
+          </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="created-by">Created by <span class="potherca">Potherca</span></p>
+  </footer>
+
+</body>
+</html>
