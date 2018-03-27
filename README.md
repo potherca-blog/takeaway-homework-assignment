@@ -16,3 +16,6 @@ This document outlines the process I went through whilst implementing the
 
 - I have chosen to use the [<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma" width="80" height="20" />](https://bulma.io)
   CSS framework to quickly have something decent-looking setup.
+- I have chosen to use CSS custom properties (also know as "CSS variables").
+  In a production environment a pre-compiler would be used to make sure that
+  older broswer are also able to use the created CSS.
