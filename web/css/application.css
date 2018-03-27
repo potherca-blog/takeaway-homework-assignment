@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/********( CSS Introduction )**************************************************/
+/*
+    This file contains all of the CSS needed to style the sample application
+    that is part of the Takeaway Homework Assignment.
+
+    In a production environment the files imported from here would most likely
+    be concattenated together (and/or minified).
+
+    The custom CSS has been split into three separate parts:
+
+     - Layout - The size, location and positioning of elements on the page
+     - Design - The color, style and look of elements on the page
+     - Modules - A combination of Layout and Design for sub-element
+
+    The main reason for this separation is that is makes it trivial to change
+    the "theme" of a page without having to think about layout and positioning
+    and vice-versa. In a production code-base the modules would most likely be
+    split across several separate files but for this sassignment that felt like
+    overkill.
+*/
+
+/* =======( Imports )======================================================== */
+@import "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css";
+@import "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700";
+@import "https://pother.ca/CssBase/css/created-by-potherca.css";
+@import url("layout.css");
+@import url("design.css");

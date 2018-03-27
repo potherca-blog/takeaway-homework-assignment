@@ -1,0 +1,17 @@
+/********( CSS Index )*********************************************************/
+/*
+    1. General Declarations
+*/
+
+/********( CSS Introduction )**************************************************/
+/*
+    Design consist of the CSS properties that have to do with the visual styling
+    of elements and typography.
+*/
+
+/*=======( General Declarations )=============================================*/
+html {
+    font-family: var(--font-main), sans-serif;
+}
+
+/********( EOF )***************************************************************/

@@ -1,0 +1,28 @@
+/********( CSS Index )*********************************************************/
+/*
+    1. General Declarations
+*/
+
+/********( CSS Introduction )**************************************************/
+/*
+    Layout consist of the CSS properties that have to do with the display, flow,
+    positioning, and dimensions of elements. This includes margins and padding.
+
+        Everything else does not belong here.
+
+    Semantically, one could argue that giving something a border is a matter of
+    design. Because borders do influence an elements size, border-width does
+    belong here. However, border-color and border-style do not belong here.
+    Instead, border style and colour should be declared in the design related
+    CSS files.
+
+    This does mean using the shorthand property for border is impossible.
+*/
+
+
+/*=======( General Declarations )=============================================*/
+html,body {
+    height: 100%;
+}
+
+/********( EOF )***************************************************************/
