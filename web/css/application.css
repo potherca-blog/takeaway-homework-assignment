@@ -27,3 +27,8 @@
 @import "https://pother.ca/CssBase/css/created-by-potherca.css";
 @import url("layout.css");
 @import url("design.css");
+
+/* =======( Custom Properties )============================================== */
+html {
+  --font-main: 'Open Sans';
+}
