@@ -11,9 +11,9 @@
 
 <body>
 
-  <header class="navbar is-transparent">
-    <div class="navbar-brand">
-      <h1 class="navbar-item">
+  <header class="navbar is-transparent | page-header">
+    <div class="navbar-brand | brand">
+      <h1 class="navbar-item | brand__name">
         Takeaway Homework Assignment
       </h1>
     </div>
@@ -43,10 +43,10 @@
     </div>
   </section>
 
-  <main class="container restaurants-container">
+  <main class="container | restaurants-container">
     <div class="columns">
 
-      <div class="column is-one-quarter restaurants-filter">
+      <div class="column is-one-quarter | restaurant-filters">
         <nav class="panel">
           <div class="panel-block">
             <p class="control has-icons-left">
@@ -58,10 +58,22 @@
           </div>
 
           <p class="panel-tabs">
-            <a class="is-active">all</a>
-            <a>open</a>
-            <a>order ahead</a>
-            <a>closed</a>
+            <a class="is-active">
+              <span class="icon"><i class="fas fa-globe"></i></span>
+              <span>All</span>
+            </a>
+            <a>
+              <span class="icon"><i class="fas fa-check-circle"></i></span>
+              <span>Open</span>
+            </a>
+            <a>
+              <span class="icon"><i class="fas fa-phone"></i></span>
+              <span>Order Ahead</span>
+            </a>
+            <a>
+              <span class="icon"><i class="fas fa-times"></i></span>
+              <span>Closed</span>
+            </a>
           </p>
 
           <p class="panel-heading">Sort Restaurants</p>
@@ -117,8 +129,8 @@
         </nav>
       </div>
 
-      <div class="column restaurants-list">
-          <article class="card restaurants-list__item">
+      <div class="column | restaurant-list">
+          <article class="card | restaurant-list__item">
             <header class="card-header">
               <h3 class="card-header-title">{{ restaurant-name }}</h3>
             </header>
@@ -128,15 +140,30 @@
               <p>the sort value for a restaurant</p>
             </div>
             <footer class="card-footer">
-              <p class="card-footer-item">(open, order ahead, closed)</p>
-              <p class="card-footer-item">(star)</p>
+              <p class="card-footer-item">
+                Current state:
+                <span class="icon has-text-success"><i class="fas fa-check-circle"></i></span>
+                <span>Open</span>
+
+                <span class="icon has-text-info"><i class="fas fa-phone"></i></span>
+                <span>Order Ahead</span>
+
+                <span class="icon has-text-danger"><i class="fas fa-times"></i></span>
+                <span>Closed</span>
+              </p>
+              <p class="card-footer-item button">
+                <a class="">
+                  <span>Favorite</span>
+                  <span class="icon"><i class="far fa-bookmark"></i></span>
+                </a>
+              </p>
             </footer>
           </article>
       </div>
     </div>
   </main>
 
-  <footer class="footer">
+  <footer class="footer has-text-right | page-footer">
     <p class="created-by">Created by <span class="potherca">Potherca</span></p>
   </footer>
 
