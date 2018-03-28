@@ -1,6 +1,14 @@
 /********( CSS Index )*********************************************************/
 /*
     1. General Declarations
+
+    2. Page Header
+        2.1. Page Header Branding
+
+    3. Main Content
+        3.1. Restaurant Filters
+
+    4. Page Footer
 */
 
 /********( CSS Introduction )**************************************************/
@@ -11,7 +19,37 @@
 
 /*=======( General Declarations )=============================================*/
 html {
+    background-color: var(--color-background);
     font-family: var(--font-main), sans-serif;
+    color: var(--color-text);
+}
+
+/*=======( Page Header )======================================================*/
+.page-header {
+    background-color: var(--color-background-dark);
+}
+
+/* -------( Page Header Branding )--------------------------------------------*/
+.brand {
+    background-color: var(--color-brand);
+}
+
+.brand__name {
+    color: white;
+    font-weight: bold;
+}
+
+/*=======( Main Content )=====================================================*/
+
+/* -------( Restaurants Filters )---------------------------------------------*/
+.restaurant-filters .panel {
+    background-color: var(--color-background-light);
+}
+
+/*=======( Page Footer )======================================================*/
+.page-footer {
+    background-color: var(--color-brand);
+    color: var(--color-text-light);
 }
 
 /********( EOF )***************************************************************/

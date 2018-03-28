@@ -1,6 +1,12 @@
 /********( CSS Index )*********************************************************/
 /*
     1. General Declarations
+
+    2. Page Header
+        2.1. Page Header Branding
+
+    3. Main Content
+        3.1. Restaurant Filters
 */
 
 /********( CSS Introduction )**************************************************/
@@ -24,5 +30,36 @@
 html,body {
     height: 100%;
 }
+
+/*=======( Page Header )======================================================*/
+
+/* -------( Page Header Branding )--------------------------------------------*/
+.brand {
+    border-bottom-right-radius: 0.35rem;
+    box-shadow: 0.1em 0.1em 0.1em;
+    height: 3rem;
+    width: auto;
+}
+
+.brand__logo {
+    height: 100%;
+    margin-left: 1rem;
+    padding: 0;
+    width: 3rem;
+}
+
+.brand__name {
+    padding-left: 0;
+}
+
+/*=======( Main Content )=====================================================*/
+.restaurants-container {
+    margin-bottom: 3rem;
+}
+/* -------( Restaurants Filters )---------------------------------------------*/
+.restaurants-filter {
+}
+
+
 
 /********( EOF )***************************************************************/

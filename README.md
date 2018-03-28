@@ -11,6 +11,7 @@ This document outlines the process I went through whilst implementing the
 2. Research Takeaway corporate identity (see [style](./docs/style.md))
 3. Build the main UI
 4. Build a UI component to represent a restaurant.
+5. Add some color and branding to the UI
 
 ## Notes
 
