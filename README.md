@@ -12,13 +12,16 @@ This document outlines the process I went through whilst implementing the
 
 ## Implementation Steps taken
 
-1. Dowload, unzip and read the assignment (see [my critique](./docs/critique.md))
-2. Research Takeaway corporate identity (see [style](./docs/style.md))
-3. Build the main UI
+1. Dowload, unzip and read the assignment (see [my critique](./docs/critique.md)).
+2. Research Takeaway corporate identity (see [style](./docs/style.md)).
+3. Build the main UI.
 4. Build a UI component to represent a restaurant.
-5. Add some color and branding to the UI
+5. Add some color and branding to the UI.
+6. Create logic to generate static JSON files for the available sort scenarios.
+7. Adds concern about the "Top Restaurants" formula (see the "Bonus
+   assignment" section of my critique.)
 
-## Notes
+## Implementation Choices
 
 - I have chosen to use the [<img src="https://bulma.io/images/bulma-logo.png" alt="Bulma" width="80" height="20" />](https://bulma.io)
   CSS framework to quickly have something decent-looking setup.
@@ -31,3 +34,9 @@ This document outlines the process I went through whilst implementing the
   selector, the pipe charater is used as a namespace separator.
 - I have chosen to us BEM as the naming scheme for CSS classes.
 - As part of the sample application branding I have added a logo.
+- Thuisbezorgd.nl uses jQuery `1.12.4`. I have choosen to use jQuery too, instead
+  of vanilla JS. I did choose to use a newer version.
+- I have chosen to have the restaurants sorted by "Top Restaurant" by default as
+  this makes the most sense from a business perspective.
+- Instead of also implementing a server-side application, I have choosen to
+  generate the JSON responses such an application would return.
