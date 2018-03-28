@@ -1,4 +1,9 @@
+![Takeaway Homework Assignment Logo](./docs/logo.png)
+
 # Takeaway Homework Assignment
+
+> _"Be more ambitious. Do your homework. There's no easy way around this."_
+> ~ Anthony McCarten
 
 ## Introduction
 
@@ -25,3 +30,4 @@ This document outlines the process I went through whilst implementing the
   note that the `|` can _not_ be accessed as a class as, in the context of a CSS
   selector, the pipe charater is used as a namespace separator.
 - I have chosen to us BEM as the naming scheme for CSS classes.
+- As part of the sample application branding I have added a logo.
