@@ -89,3 +89,26 @@ could also use some work.
   named `sample.json` with a lower-case "S"? This _is_ the convention.
   Furthermore, would it be so much to ask for an example of the sample data? Do
   I really have to open the data file to figure out what the JSON structure is?
+
+## Bonus assignment
+
+There are some serious problems with the formula stated in the bonus section:
+
+    top restaurants = ((distance * popularity) + rating average)
+
+Restaurants that are _further away_ would score **higher** than those _closer by_.
+
+This conflicts 100% with the statement:
+
+> Customers are more willing to order at restaurants near them.
+
+Also, multiplying `distance` with `popularity` gives a number in the thousands.
+The `rating average` would barely make a contribution to the score.
+
+This conflicts strongly with the statement:
+
+> We like to promote restaurants with high scores
+
+Either this Bonus assignment is flawed (either by accident or on purpose) or the
+formula is not meant to be an actual representation of reality but merely a way
+to get an insight into how a developer would implement _any_ formula.
