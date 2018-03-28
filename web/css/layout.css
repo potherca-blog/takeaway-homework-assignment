@@ -3,10 +3,17 @@
     1. General Declarations
 
     2. Page Header
+
         2.1. Page Header Branding
 
     3. Main Content
-        3.1. Restaurant Filters
+
+        3.1. Restaurants Filter
+
+        3.2. Restaurants List
+
+        3.2.1. Restaurants List Item
+
 */
 
 /********( CSS Introduction )**************************************************/
@@ -56,10 +63,23 @@ html,body {
 .restaurants-container {
     margin-bottom: 3rem;
 }
-/* -------( Restaurants Filters )---------------------------------------------*/
+
+/* -------( Restaurants Filter )---------------------------------------------*/
 .restaurants-filter {
 }
 
+/* -------( Restaurants List )------------------------------------------------*/
 
+/* .......( Restaurants List Item )...........................................*/
+.restaurant-list__item {
+    display: inline-block;
+    margin: 0 2rem 3rem;
+    min-width: 20rem;
+    width: 40%;
+}
+
+.favorite-button {
+    height: 100%;
+}
 
 /********( EOF )***************************************************************/
