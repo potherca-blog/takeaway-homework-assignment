@@ -111,43 +111,6 @@
 
           <p class="panel-heading">Sort Restaurants</p>
 
-          <a class="panel-block is-active">
-            <span class="panel-icon"><i class="fas fa-utensils"></i></span>
-            <span>Top Restaurant</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-crosshairs"></i></span>
-            <span>best match</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-shopping-basket"></i></span>
-            <span>average product price</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-truck"></i></span>
-            <span>delivery costs</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-map-marker-alt"></i></span>
-            <span>distance</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-money-bill-alt"></i></span>
-            <span>minimum costs</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-certificate"></i></span>
-            <span>newest</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="fas fa-thumbs-up"></i></span>
-            <span>popularity</span>
-          </a>
-          <a class="panel-block">
-            <span class="panel-icon"><i class="far fa-star"></i></span>
-            <span>rating average</span>
-          </a>
-
           <label class="panel-block">
             <input type="checkbox" />
             <span>Only show Favorites</span>
@@ -201,6 +164,17 @@
   <footer class="footer has-text-right | page-footer">
     <p class="created-by">Created by <span class="potherca">Potherca</span></p>
   </footer>
+
+  <!-- ========================== HTML TEMPLATES =========================== -->
+
+  <template id="sortingValues-item-template">
+    <a class="panel-block {{#active}}is-active{{/active}}" data-sort-option="{{ key }}">
+      <span class="panel-icon">
+        <i class="{{ icon-type }} fa-{{ icon}}"></i>
+      </span>
+      <span>{{ label }}</span>
+    </a>
+  </template>
 
 </body>
 </html>
