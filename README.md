@@ -18,8 +18,11 @@ This document outlines the process I went through whilst implementing the
 4. Build a UI component to represent a restaurant.
 5. Add some color and branding to the UI.
 6. Create logic to generate static JSON files for the available sort scenarios.
+   (see [`generate.php`](./src/generate.php))
 7. Adds concern about the "Top Restaurants" formula (see the "Bonus
    assignment" section of my critique.)
+8. Add logic to populate the Restaurant List in the UI from the `sample.json`
+   (see [`list.js`](./web/js/list.js)).
 
 ## Implementation Choices
 
