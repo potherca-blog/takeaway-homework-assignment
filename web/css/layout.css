@@ -1,4 +1,5 @@
-/********( CSS Index )*********************************************************/
+/* ******( CSS Index )******************************************************* */
+
 /*
     1. General Declarations
 
@@ -16,7 +17,8 @@
 
 */
 
-/********( CSS Introduction )**************************************************/
+/* ******( CSS Introduction )************************************************ */
+
 /*
     Layout consist of the CSS properties that have to do with the display, flow,
     positioning, and dimensions of elements. This includes margins and padding.
@@ -32,54 +34,54 @@
     This does mean using the shorthand property for border is impossible.
 */
 
-
-/*=======( General Declarations )=============================================*/
-html,body {
-    height: 100%;
+/* ======( General Declarations )============================================ */
+html,
+body {
+  height: 100%;
 }
 
-/*=======( Page Header )======================================================*/
+/* ======( Page Header )===================================================== */
 
-/* -------( Page Header Branding )--------------------------------------------*/
+/* -------( Page Header Branding )------------------------------------------- */
 .brand {
-    border-bottom-right-radius: 0.35rem;
-    box-shadow: 0.1em 0.1em 0.1em;
-    height: 3rem;
-    width: auto;
+  border-bottom-right-radius: 0.35rem;
+  box-shadow: 0.1em 0.1em 0.1em;
+  height: 3rem;
+  width: auto;
 }
 
 .brand__logo {
-    height: 100%;
-    margin-left: 1rem;
-    padding: 0;
-    width: 3rem;
+  height: 100%;
+  margin-left: 1rem;
+  padding: 0;
+  width: 3rem;
 }
 
 .brand__name {
-    padding-left: 0;
+  padding-left: 0;
 }
 
-/*=======( Main Content )=====================================================*/
+/* ======( Main Content )==================================================== */
 .restaurants-container {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
-/* -------( Restaurants Filter )---------------------------------------------*/
+/* -------( Restaurants Filter )-------------------------------------------- */
 .restaurants-filter {
 }
 
-/* -------( Restaurants List )------------------------------------------------*/
+/* -------( Restaurants List )----------------------------------------------- */
 
-/* .......( Restaurants List Item )...........................................*/
+/* .......( Restaurants List Item ).......................................... */
 .restaurant-list__item {
-    display: inline-block;
-    margin: 0 2rem 3rem;
-    min-width: 20rem;
-    width: 40%;
+  display: inline-block;
+  margin: 0 2rem 3rem;
+  min-width: 20rem;
+  width: 40%;
 }
 
 .favorite-button {
-    height: 100%;
+  height: 100%;
 }
 
-/********( EOF )***************************************************************/
+/* ******( EOF )************************************************************* */

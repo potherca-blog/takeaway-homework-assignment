@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-/********( CSS Introduction )**************************************************/
+/* ******( CSS Introduction )************************************************ */
+
 /*
     This file contains all of the CSS needed to style the sample application
     that is part of the Takeaway Homework Assignment.
@@ -30,16 +31,16 @@
 
 /* =======( Custom Properties )============================================== */
 html {
-  --color-action: #50AECC;               /* Light blue */
-  --color-background-dark: #A4A3A3;      /* Gray brown */
-  --color-background-light: #FFF;        /* White */
-  --color-background: #F9F5F1;           /* Very light brown */
-  --color-brand: #FF8000;                /* Orange */
-  --color-dark-clear: rgba(0,0,0,0.75);  /*rgba(76,76,76,.25)*/
-  --color-dark: #261E1E;                 /* Very dark brown */
-  --color-text-light: #FFF;              /* White */
-  --color-text: #333333;                 /* Dark gray */
+  --color-action: #50aecc;               /* Light blue */
+  --color-background-dark: #a4a3a3;      /* Gray brown */
+  --color-background-light: #fff;        /* White */
+  --color-background: #f9f5f1;           /* Very light brown */
+  --color-brand: #ff8000;                /* Orange */
+  --color-dark-clear: rgba(0, 0, 0, 0.75);  /* gba(76,76,76,.25 */
+  --color-dark: #261e1e;                 /* Very dark brown */
+  --color-text-light: #fff;              /* White */
+  --color-text: #333;                 /* Dark gray */
   --font-main: 'Open Sans';
 }
 
-/********( EOF )***************************************************************/
+/* ******( EOF )************************************************************* */

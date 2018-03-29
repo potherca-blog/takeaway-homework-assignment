@@ -1,4 +1,5 @@
-/********( CSS Index )*********************************************************/
+/* ******( CSS Index )******************************************************* */
+
 /*
     1. General Declarations
 
@@ -11,45 +12,46 @@
     4. Page Footer
 */
 
-/********( CSS Introduction )**************************************************/
+/* ******( CSS Introduction )************************************************ */
+
 /*
     Design consist of the CSS properties that have to do with the visual styling
     of elements and typography.
 */
 
-/*=======( General Declarations )=============================================*/
+/* ======( General Declarations )============================================ */
 html {
-    background-color: var(--color-background);
-    font-family: var(--font-main), sans-serif;
-    color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: var(--font-main), sans-serif;
+  color: var(--color-text);
 }
 
-/*=======( Page Header )======================================================*/
+/* ======( Page Header )===================================================== */
 .page-header {
-    background-color: var(--color-background-dark);
+  background-color: var(--color-background-dark);
 }
 
-/* -------( Page Header Branding )--------------------------------------------*/
+/* -------( Page Header Branding )------------------------------------------- */
 .brand {
-    background-color: var(--color-brand);
+  background-color: var(--color-brand);
 }
 
 .brand__name {
-    color: white;
-    font-weight: bold;
+  color: white;
+  font-weight: bold;
 }
 
-/*=======( Main Content )=====================================================*/
+/* ======( Main Content )==================================================== */
 
-/* -------( Restaurants Filters )---------------------------------------------*/
+/* -------( Restaurants Filters )-------------------------------------------- */
 .restaurant-filters .panel {
-    background-color: var(--color-background-light);
+  background-color: var(--color-background-light);
 }
 
-/*=======( Page Footer )======================================================*/
+/* ======( Page Footer )===================================================== */
 .page-footer {
-    background-color: var(--color-brand);
-    color: var(--color-text-light);
+  background-color: var(--color-brand);
+  color: var(--color-text-light);
 }
 
-/********( EOF )***************************************************************/
+/* ******( EOF )************************************************************* */
