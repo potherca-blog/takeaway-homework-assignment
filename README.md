@@ -23,6 +23,8 @@ This document outlines the process I went through whilst implementing the
    assignment" section of my critique.)
 8. Add logic to populate the Restaurant List in the UI from the `sample.json`
    (see [`list.js`](./web/js/list.js)).
+9. Add logic to populate the sort options in the UI
+   (see [`sortOptions.js`](./web/js/sortOptions.js)).
 
 ## Implementation Choices
 
