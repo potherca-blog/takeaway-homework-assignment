@@ -126,35 +126,6 @@
       </div>
 
       <div class="column | restaurant-list">
-          <article class="card | restaurant-list__item">
-            <header class="card-header">
-              <h3 class="card-header-title">{{ restaurant-name }}</h3>
-            </header>
-            <div class="card-content">
-              <p>{{ restaurant-description }}</p>
-              <p>the selected sort</p>
-              <p>the sort value for a restaurant</p>
-            </div>
-            <footer class="card-footer">
-              <p class="card-footer-item">
-                Current state:
-                <span class="icon has-text-success"><i class="fas fa-check-circle"></i></span>
-                <span>Open</span>
-
-                <span class="icon has-text-info"><i class="fas fa-phone"></i></span>
-                <span>Order Ahead</span>
-
-                <span class="icon has-text-danger"><i class="fas fa-times"></i></span>
-                <span>Closed</span>
-              </p>
-              <p class="card-footer-item button">
-                <a class="">
-                  <span>Favorite</span>
-                  <span class="icon"><i class="far fa-bookmark"></i></span>
-                </a>
-              </p>
-            </footer>
-          </article>
       </div>
     </div>
   </main>
@@ -174,6 +145,45 @@
       </span>
       <span>{{ label }}</span>
     </a>
+  </template>
+
+  <template id="restaurant-item-template">
+    <article class="card | restaurant-list__item">
+      <header class="card-header">
+        <h3 class="card-header-title is-centered">{{ name }}</h3>
+      </header>
+      <div class="card-content">
+        <div class="field is-grouped is-grouped-multiline">
+
+        {{#sortItems}}
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-rounded is-dark">
+                <i class="{{ icon-type }} fa-{{ icon}}"></i>
+                &nbsp;{{ label }}
+              </span>
+              <span class="tag rounded is-{{ style }}">{{ value }}</span>
+            </div>
+          </div>
+        {{/sortItems}}
+
+        </div>
+      </div>
+      <footer class="card-footer">
+        <p class="card-footer-item">
+          <span class="icon has-text-{{ status.color}}">
+            <i class="fas fa-{{ status.icon }}"></i>
+          </span>
+          <span>{{ status.label }}</span>
+        </p>
+        <p class="card-footer-item button | favorite-button">
+          <a class="">
+            <span>Favorite</span>
+            <span class="icon"><i class="far fa-bookmark"></i></span>
+          </a>
+        </p>
+      </footer>
+    </article>
   </template>
 
 </body>
