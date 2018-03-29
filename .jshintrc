@@ -1,0 +1,26 @@
+{
+  "browser": true,
+  "camelcase": false,
+  "devel": false,
+  "eqeqeq": true,
+  "esversion": 5,
+  "funcscope": false,
+  "globals": {
+      "jQuery": false,
+      "Mustache": false,
+      "THA": false
+  },
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
+  "maxcomplexity": 15,
+  "maxdepth": 3,
+  "maxlen": 100,
+  "maxparams": 3,
+  "maxstatements": 15,
+  "newcap": true,
+  "quotmark": "single",
+  "strict": true,
+  "undef": true,
+  "unused": true
+}
