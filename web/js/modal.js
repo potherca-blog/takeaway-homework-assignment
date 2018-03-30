@@ -59,6 +59,14 @@
         },
         show: function (p_sBody, p_sTitle) {
             showModal(p_sBody, p_sTitle);
+        },
+        showError: function (p_oError, p_sErrorType) {
+            p_sErrorType = p_sErrorType || 'Error';
+            showModal(
+                '<p>' + p_oError.filename  + ' : ' + p_oError.lineno  + '</p>' +
+                '<pre>' + p_oError.message + '</pre>',
+                '<span class="has-text-danger">'+ p_sErrorType + '!</span>'
+            );
         }
     };
 }(window, document, jQuery));
