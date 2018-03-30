@@ -44,7 +44,7 @@ function addTopRestaurants($restaurants)
     }, $restaurants);
 }
 
-function sortByKey($restaurants, $sortKey)
+function sortByKey($restaurants, $sortKey, $descendingValues)
 {
     $sortOrder = [
         'open' => 0,
@@ -52,10 +52,15 @@ function sortByKey($restaurants, $sortKey)
         'closed' => 2,
     ];
 
-    usort($restaurants, function ($left, $right) use ($sortKey, $sortOrder) {
+    usort($restaurants, function ($left, $right) use ($descendingValues, $sortKey, $sortOrder) {
 
         if ($left['status'] === $right['status']) {
-            $sortValue = $right['sortingValues'][$sortKey] - $left['sortingValues'][$sortKey];
+
+            if (in_array($sortKey, $descendingValues)) {
+                $sortValue = $left['sortingValues'][$sortKey] - $right['sortingValues'][$sortKey];
+            } else {
+                $sortValue = $right['sortingValues'][$sortKey] - $left['sortingValues'][$sortKey];
+            }
         } else {
             $sortValue = $sortOrder[$left['status']] - $sortOrder[$right['status']];
         }
@@ -66,12 +71,12 @@ function sortByKey($restaurants, $sortKey)
     return $restaurants;
 }
 
-function createRestaurantCollection($restaurants, $sortKeys)
+function createRestaurantCollection($restaurants, $sortKeys, $descendingValues)
 {
     $sortedRestaurants = [];
 
-    array_walk($sortKeys, function ($sortKey) use (&$sortedRestaurants, $restaurants) {
-        $sortedRestaurants[$sortKey] = sortByKey($restaurants, $sortKey);
+    array_walk($sortKeys, function ($sortKey) use (&$sortedRestaurants, $descendingValues, $restaurants) {
+        $sortedRestaurants[$sortKey] = sortByKey($restaurants, $sortKey, $descendingValues);
     });
 
     return $sortedRestaurants;
@@ -97,7 +102,7 @@ function getSortKeys($restaurants)
     return $sortKeys;
 }
 
-function run($filePath, $apiDirectory)
+function run($filePath, $apiDirectory, $descendingValues)
 {
     $restaurants = getRestaurantsFromFile($filePath);
 
@@ -105,7 +110,7 @@ function run($filePath, $apiDirectory)
 
     $sortKeys = getSortKeys($restaurants);
 
-    $restaurantsCollection = createRestaurantCollection($restaurants, $sortKeys);
+    $restaurantsCollection = createRestaurantCollection($restaurants, $sortKeys, $descendingValues);
 
     putRestaurantsToFile($restaurantsCollection, $apiDirectory);
 }
@@ -135,7 +140,9 @@ TXT;
     echo 'ERROR ! Two parameter required: <path-to-sample-json> <api-directory>'.PHP_EOL;
     $exitCode = 65;
 } else {
-    run($argv[1], $argv[2]);
+    $descendingValues = ['averageProductPrice', 'deliveryCosts', 'distance', 'minCost'];
+
+    run($argv[1], $argv[2], $descendingValues);
 }
 exit($exitCode);
 
