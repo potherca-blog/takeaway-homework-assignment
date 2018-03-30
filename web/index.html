@@ -139,7 +139,7 @@
 
   <!-- ========================== HTML TEMPLATES =========================== -->
 
-  <template id="sortingValues-item-template">
+  <template id="sortingOptions-item-template">
     <a class="panel-block {{#active}}is-active{{/active}}" data-sort-option="{{ key }}">
       <span class="panel-icon">
         <i class="{{ icon-type }} fa-{{ icon}}"></i>
@@ -157,13 +157,13 @@
         <div class="field is-grouped is-grouped-multiline">
 
         {{#sortItems}}
-          <div class="control">
+          <div class="control" data-sort-option="{{ key }}">
             <div class="tags has-addons">
               <span class="tag is-rounded is-dark">
                 <i class="{{ icon-type }} fa-{{ icon}}"></i>
                 &nbsp;{{ label }}
               </span>
-              <span class="tag rounded is-{{ style }}">{{ value }}</span>
+              <span class="tag | sort-option__value">{{ value }}</span>
             </div>
           </div>
         {{/sortItems}}

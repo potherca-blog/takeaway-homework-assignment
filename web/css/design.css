@@ -7,7 +7,11 @@
         2.1. Page Header Branding
 
     3. Main Content
-        3.1. Restaurant Filters
+
+        3.1. Restaurants Filters
+
+        3.2. Restaurants List
+          3.2.1 Sort Options
 
     4. Page Footer
 */
@@ -28,12 +32,14 @@ html {
 
 /* ======( Page Header )===================================================== */
 .page-header {
-  background-color: var(--color-background-dark);
+  background-color: var(--color-dark-clear);
 }
 
 /* -------( Page Header Branding )------------------------------------------- */
 .brand {
   background-color: var(--color-brand);
+  border-bottom-right-radius: 0.35rem;
+  box-shadow: 0.1em 0.1em 0.1em;
 }
 
 .brand__name {
@@ -46,6 +52,14 @@ html {
 /* -------( Restaurants Filters )-------------------------------------------- */
 .restaurant-filters .panel {
   background-color: var(--color-background-light);
+}
+
+/* -------( Restaurants List )----------------------------------------------- */
+
+/* .......( Sort Options )................................................... */
+.sort-option__value--is-active {
+  background-color: var(--color-brand) !important;
+  color: var(--color-text-light) !important;
 }
 
 /* ======( Page Footer )===================================================== */
