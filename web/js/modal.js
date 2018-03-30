@@ -22,7 +22,7 @@
     function setup () {
         if ($Modal === undefined) {
             var sHtml = '' +
-                '<div class="modal" id="modal">' +
+                '<div class="modal">' +
                 '  <div class="modal-background"></div>' +
                 '  <div class="modal-card">' +
                 '    <header class="modal-card-head">' +
@@ -41,9 +41,9 @@
                 '</div>'
             ;
 
-            $(document.body).append(sHtml);
+            $Modal = $(sHtml);
 
-            $Modal = $('#modal');
+            $(document.body).append($Modal);
 
             $Modal.find('.modal-background, .modal-close-button').on('click', function () {
                 hideModal();
@@ -51,13 +51,13 @@
         }
     }
 
+    setup();
+
     window.THA.modal = {
         hide: function () {
-            setup();
             hideModal();
         },
         show: function (p_sBody, p_sTitle) {
-            setup();
             showModal(p_sBody, p_sTitle);
         }
     };
