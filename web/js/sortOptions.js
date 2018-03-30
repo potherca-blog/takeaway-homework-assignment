@@ -3,32 +3,33 @@
 
     window.THA = window.THA || {};
 
-    function populateList(p_oItems, p_sActiveItem, p_fClickHandler) {
-        var aKey, oData, sRendered, sTemplate;
+    function populateList(p_sTemplate, p_oItems, p_sActiveItem) {
+        var aListItems, oData, sRendered, $ListItems;
 
-        sTemplate = $('#sortingValues-item-template').html();
-        Mustache.parse(sTemplate);
+        aListItems = [];
 
-        aKey = Object.keys(p_oItems).reverse();
+        Mustache.parse(p_sTemplate);
 
-        aKey.forEach(function (p_sKey) {
+        Object.keys(p_oItems).forEach(function (p_sKey) {
+
             oData = p_oItems[p_sKey];
             oData.key = p_sKey;
             oData.active = (p_sKey === p_sActiveItem);
 
-            sRendered = Mustache.render(sTemplate, oData);
+            sRendered = Mustache.render(p_sTemplate, oData);
 
-            var $Element = $(sRendered);
-
-            $Element.on('click', p_fClickHandler);
-
-            $('.restaurant-filters .panel-heading').after($Element);
+            aListItems.push($(sRendered));
         });
+
+        /* Convert the array of jQuery objects to a single jQuery object */
+        $ListItems = aListItems.reduce($.merge);
+
+        return Promise.resolve($ListItems);
     }
 
     window.THA.sortOptions = {
-        populate: function (p_aItems, p_sActiveItem, p_fClickHandler) {
-            populateList(p_aItems, p_sActiveItem, p_fClickHandler);
+        populate: function (p_sTemplate, p_aItems, p_sActiveItem) {
+            return populateList(p_sTemplate, p_aItems, p_sActiveItem);
         },
     };
 }(window, jQuery, Mustache));
