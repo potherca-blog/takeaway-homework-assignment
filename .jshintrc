@@ -2,6 +2,9 @@
   "browser": true,
   "camelcase": false,
   "devel": false,
+  "predef": [
+    "Promise"
+  ],
   "eqeqeq": true,
   "esversion": 5,
   "funcscope": false,
