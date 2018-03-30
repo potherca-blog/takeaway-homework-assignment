@@ -6,7 +6,7 @@
     function fetchList(p_sActiveItem, p_fBeforeSend) {
         var sApiUrl;
 
-        sApiUrl = '/api/' + p_sActiveItem + '.json';
+        sApiUrl = './../api/' + p_sActiveItem + '.json';
 
         return $.ajax(
             sApiUrl, {
