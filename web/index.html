@@ -34,6 +34,7 @@
 
   <!-- ======================= APPLICATION ASSETS ========================== -->
 
+  <script defer src="./js/favorites.js"></script>
   <script defer src="./js/fetch.js"></script>
   <script defer src="./js/filterTabs.js"></script>
   <script defer src="./js/list.js"></script>
@@ -203,12 +204,17 @@
           </span>
           <span>{{ status.label }}</span>
         </p>
-        <p class="card-footer-item button | favorite-button">
-          <a class="">
-            <span>Favorite</span>
-            <span class="icon"><i class="far fa-bookmark"></i></span>
-          </a>
-        </p>
+        <a
+          class="card-footer-item button | js-favorite-button | favorite-button"
+          data-restaurant-name="{{ name }}"
+          data-favorite="false"
+        >
+          <span>Favorite</span>
+          <span class="icon">
+            <i class="far fa-bookmark | favorite-button__icon--is-not-favorite"></i>
+            <i class="fas fa-bookmark | favorite-button__icon--is-favorite"></i>
+          </span>
+        </a>
       </footer>
     </article>
   </template>

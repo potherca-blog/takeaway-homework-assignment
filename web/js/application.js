@@ -29,6 +29,36 @@
         }, 'AJAX Error');
     }
 
+    function updateFavorites(p_$RestaurantList, p_aFavorites){
+        if (p_aFavorites !== null) {
+            p_aFavorites.forEach(function(p_sRestaurant){
+                p_$RestaurantList.find('[data-restaurant-name="'+p_sRestaurant+'"]').attr('data-favorite', true);
+            });
+        }
+    }
+
+    function favoriteClickHandler(p_$ActiveItem) {
+        var aFavorites, bActive, sRestaurant;
+
+        sRestaurant = p_$ActiveItem.data('restaurant-name');
+
+        aFavorites = THA.favorites.get();
+
+        if ($.inArray(sRestaurant, aFavorites) === -1) {
+            bActive = true;
+            aFavorites.push(sRestaurant);
+        } else {
+            bActive = false;
+            aFavorites = jQuery.grep(aFavorites, function(p_iItem) {
+                return p_iItem !== sRestaurant;
+            });
+        }
+
+        THA.favorites.set(aFavorites);
+
+        p_$ActiveItem.attr('data-favorite', bActive);
+    }
+
     function updateUI(p_oData, p_sActiveItem, p_oSortMap) {
         return THA.list.populate(
             sRestaurantItemTemplate,
@@ -44,6 +74,20 @@
             $RestaurantList.append(p_$List);
 
             $('.restaurant-filters__tab--is-active').trigger('click');
+
+            updateFavorites(p_$List, THA.favorites.get());
+
+            $('.js-favorite-button').on('click', function (p_oEvent) {
+                var $ActiveItem;
+
+                $ActiveItem = $(p_oEvent.target);
+
+                if($ActiveItem.is('.js-favorite-button') === false) {
+                    $ActiveItem = $ActiveItem.parents('.js-favorite-button');
+                }
+
+                favoriteClickHandler($ActiveItem);
+            });
         });
     }
 

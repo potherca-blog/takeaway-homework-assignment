@@ -114,6 +114,16 @@ body {
   height: 100%;
 }
 
+[data-favorite="false"] .favorite-button__icon--is-favorite,
+[data-favorite="true"] .favorite-button__icon--is-not-favorite {
+  display: none;
+}
+
+[data-favorite="false"] .favorite-button__icon--is-not-favorite,
+[data-favorite="true"] .favorite-button__icon--is-favorite {
+  display: block;
+}
+
 /* ======( Loading Spinner )===================================================== */
 .loading-spinner {
   display: none;
