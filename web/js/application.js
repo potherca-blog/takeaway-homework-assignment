@@ -43,7 +43,7 @@
 
             $RestaurantList.append(p_$List);
 
-            $('.js-tab-filter.is-active').trigger('click');
+            $('.restaurant-filters__tab--is-active').trigger('click');
         });
     }
 
@@ -81,9 +81,9 @@
 
         $ListItems = $(p_sListItemSelector);
 
-        p_$TabFilters.removeClass('is-active');
+        p_$TabFilters.removeClass('restaurant-filters__tab--is-active');
 
-        p_$ActiveItem.addClass('is-active');
+        p_$ActiveItem.addClass('restaurant-filters__tab--is-active');
 
         sActiveState = p_$ActiveItem.text().trim();
 
@@ -237,7 +237,6 @@
 
     THA.sortOptions.populate(sSortItemTemplate, oSortMap).then(
         function (p_$ListItems) {
-
             attachtmlListItems(
                 p_$ListItems,
                 oSortMap,

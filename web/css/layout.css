@@ -77,15 +77,27 @@ body {
 
 /* .......( Restaurants Filter Tabs )....................................... */
 .restaurant-filters__tab {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-    padding: 0.3rem;
-    white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  padding: 0.3rem;
+  white-space: nowrap;
 }
+
+.restaurant-filters__tabs {
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 800px) {
+  .restaurant-filters__tabs {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
 .restaurant-filters__tab:nth-child(n+2) {
-    border-left-width: 1px;
-    border-left-style: solid;
+  border-left-width: 1px;
+  border-left-style: solid;
 }
 
 /* -------( Restaurants List )----------------------------------------------- */
