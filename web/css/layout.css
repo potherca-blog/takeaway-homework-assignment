@@ -10,6 +10,7 @@
     3. Main Content
 
         3.1. Restaurants Filter
+          3.1.1. Restaurants Filter Tabs
 
         3.2. Restaurants List
 
@@ -73,7 +74,18 @@ body {
 }
 
 /* -------( Restaurants Filter )-------------------------------------------- */
-.restaurants-filter {
+
+/* .......( Restaurants Filter Tabs )....................................... */
+.restaurant-filters__tab {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding: 0.3rem;
+    white-space: nowrap;
+}
+.restaurant-filters__tab:nth-child(n+2) {
+    border-left-width: 1px;
+    border-left-style: solid;
 }
 
 /* -------( Restaurants List )----------------------------------------------- */

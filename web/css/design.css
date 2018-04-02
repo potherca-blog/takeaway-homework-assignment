@@ -56,7 +56,12 @@ html {
   background-color: var(--color-background-light);
 }
 
-/* -------( Restaurants List )----------------------------------------------- */
+/* -------( Restaurants Filter )-------------------------------------------- */
+
+/* .......( Restaurants Filter Tabs )....................................... */
+.restaurant-filters__tab {
+    border-left-color: var(--color-background-dark);
+}
 
 /* .......( Sort Options )................................................... */
 .sort-option__value--is-active {
