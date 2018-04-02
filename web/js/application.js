@@ -12,6 +12,7 @@
     'use strict';
 
     var oSortMap,
+        oStateMap,
         sRestaurantItemTemplate,
         sSortItemTemplate,
         $Loading,
@@ -31,7 +32,8 @@
         return THA.list.populate(
             sRestaurantItemTemplate,
             p_oData.restaurants,
-            p_oSortMap
+            p_oSortMap,
+            oStateMap
         ).then(function (p_$List) {
             p_$List.find('[data-sort-option="' + p_sActiveItem + '"]')
                 .find('.sort-option__value')
@@ -44,10 +46,6 @@
 
     function sortItemClickHandler(p_$ActiveItem, p_$ListItems, p_oSortMap) {
         var sActiveItem;
-
-        if(p_$ActiveItem.data('sort-option') === undefined) {
-            p_$ActiveItem = p_$ActiveItem.parents('[data-sort-option]');
-        }
 
         p_$ListItems.removeClass('is-active');
 
@@ -75,8 +73,8 @@
         });
     }
 
-    function attachtmlListItems(p_$ListItems, p_oSortMap) {
-        var $Previous = $('.restaurant-filters .panel-heading');
+    function attachtmlListItems(p_$ListItems, p_oSortMap, p_$Attach) {
+        var $Previous = p_$Attach;
 
         p_$ListItems.each(function (p_iIndex, p_oListItem){
             var $ListItem;
@@ -88,9 +86,19 @@
             $Previous = $ListItem;
 
             $ListItem.on('click', function (p_oEvent) {
-                sortItemClickHandler($(p_oEvent.target), p_$ListItems, p_oSortMap);
+                var $ActiveItem;
+
+                $ActiveItem = $(p_oEvent.target);
+
+                if($ActiveItem.data('sort-option') === undefined) {
+                    $ActiveItem = $ActiveItem.parents('[data-sort-option]');
+                }
+
+                sortItemClickHandler($ActiveItem, p_$ListItems, p_oSortMap);
             });
         });
+
+        return Promise.resolve(p_$ListItems);
     }
 
     /*/ Add error handling /*/
@@ -150,6 +158,29 @@
             label: 'Average Product Price'
         },
     };
+    oStateMap = {
+        'all' : {
+            color: 'info',
+            icon: 'globe',
+            label: 'All'
+        },
+        'open' :{
+            color: 'success',
+            icon: 'check-circle',
+            label: 'Open'
+        },
+        'order ahead' :{
+            color:'info',
+            icon: 'phone',
+            label: 'Order Ahead'
+        },
+        'closed' :{
+            color:'danger',
+            icon: 'times',
+            label: 'Closed'
+        }
+    };
+
     $Loading = $('.loading-spinner');
     $RestaurantList = $('.restaurant-list');
     $SearchFilter = $('.js-search-filter');
@@ -157,10 +188,13 @@
     THA.sortOptions.populate(sSortItemTemplate, oSortMap).then(
         function (p_$ListItems) {
 
-            attachtmlListItems(p_$ListItems, oSortMap);
-
-            /*/ Load initial list /*/
-            p_$ListItems.first().trigger('click');
+            attachtmlListItems(
+                p_$ListItems,
+                oSortMap,
+                $('.restaurant-filters .panel-heading')
+            ).then(function (p_$ListItems) {
+                p_$ListItems.first().trigger('click');
+            });
         }
     );
 }(window, jQuery, THA));
