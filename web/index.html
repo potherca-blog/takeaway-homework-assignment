@@ -9,19 +9,28 @@
 
   <script
     crossorigin="anonymous"
+    defer
     integrity="sha256-iaqfO5ue0VbSGcEiQn+OeXxnxAMK2+QgHXIDA5bWtGI="
     src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"
   ></script>
-  <script defer
+  <script
     crossorigin="anonymous"
+    defer
     integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
   ></script>
-  <script defer
+  <script
     crossorigin="anonymous"
+    defer
     integrity="sha384-0AJY8UERsBUKdWcyF3o2kisLKeIo6G4Tbd8Y6fbyw6qYmn4WBuqcvxokp8m2UzSD"
     src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"
-    ></script>
+  ></script>
+  <script
+      crossorigin="anonymous"
+      defer
+      integrity="sha384-jbQbww5gMQQRzl0USwetRucoG3grFezyAHvwd2ypuecVO3+cNt2KdeOsyqPz50md"
+      src="https://rawgit.com/Potherca/c765ec8e09270f25e44e525979c08a8a/raw/jquery.filterFor.js"
+  ></script>
 
   <!-- ======================= APPLICATION ASSETS ========================== -->
 
@@ -83,9 +92,9 @@
       <div class="column is-one-quarter | restaurant-filters">
         <nav class="panel">
 
-          <div class="panel-block is-hidden">
+          <div class="panel-block">
             <p class="control has-icons-left">
-              <input class="input" placeholder="search" type="text" />
+              <input class="input | js-search-filter" placeholder="search" type="text" />
               <span class="icon is-small is-left">
                 <i class="fas fa-search"></i>
               </span>

@@ -11,7 +11,13 @@
 
     'use strict';
 
-    var oSortMap, sRestaurantItemTemplate, sSortItemTemplate, $Loading;
+    var oSortMap,
+        sRestaurantItemTemplate,
+        sSortItemTemplate,
+        $Loading,
+        $RestaurantList,
+        $SearchFilter
+    ;
 
     function displayAjaxError(p_oXHR, p_sStatus, p_sError) {
         THA.modal.showError({
@@ -22,7 +28,7 @@
     }
 
     function updateUI(p_oData, p_sActiveItem, p_oSortMap) {
-        THA.list.populate(
+        return THA.list.populate(
             sRestaurantItemTemplate,
             p_oData.restaurants,
             p_oSortMap
@@ -32,7 +38,7 @@
                 .addClass('sort-option__value--is-active')
             ;
 
-            $('.restaurant-list').append(p_$List);
+            $RestaurantList.append(p_$List);
         });
     }
 
@@ -51,14 +57,20 @@
 
         THA.fetch.fetchList(sActiveItem, function () {
             $Loading.show();
-            /*/ Clear out current list /*/
-            $('.restaurant-list').html('');
+            /*/ Clear out current list and search value /*/
+            $RestaurantList.html('');
+            $SearchFilter.val('');
         }).then(
             function (p_oData) {
-                updateUI(p_oData, sActiveItem, p_oSortMap);
+                return updateUI(p_oData, sActiveItem, p_oSortMap);
             },
             displayAjaxError
-        ).always(function () {
+        ).then(function(){
+            /*/ Add search/filter functionality /*/
+            $SearchFilter.filterFor('.restaurant-list__item',{
+                sortItemSelector: '.card-header-title'
+            });
+        }).always(function () {
             $Loading.hide();
         });
     }
@@ -85,6 +97,10 @@
     window.addEventListener('error', function (p_oError) {
         THA.modal.showError(p_oError, 'Javascript Error');
     });
+
+    /*/ Retrieve HTML templates /*/
+    sRestaurantItemTemplate = $('#restaurant-item-template').html();
+    sSortItemTemplate = $('#sortingOptions-item-template').html();
 
     /*/ Set up initial values /*/
     oSortMap = {
@@ -134,13 +150,9 @@
             label: 'Average Product Price'
         },
     };
-
-    /*/ Retrieve "loading" spinner /*/
     $Loading = $('.loading-spinner');
-
-    /*/ Retrieve HTML templates /*/
-    sRestaurantItemTemplate = $('#restaurant-item-template').html();
-    sSortItemTemplate = $('#sortingOptions-item-template').html();
+    $RestaurantList = $('.restaurant-list');
+    $SearchFilter = $('.js-search-filter');
 
     THA.sortOptions.populate(sSortItemTemplate, oSortMap).then(
         function (p_$ListItems) {

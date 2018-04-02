@@ -25,6 +25,9 @@ This document outlines the process I went through whilst implementing the
    (see [`list.js`](./web/js/list.js)).
 9. Add logic to populate the sort options in the UI
    (see [`sortOptions.js`](./web/js/sortOptions.js)).
+10. Moves HTML into templates for JS re-use.
+11. Connects JS logic to HTML (see [`application.js`](./web/js/application.js))
+12. Adds search functionality (see [`jquery.filterFor.js`](https://gist.github.com/Potherca/c765ec8e09270f25e44e525979c08a8a)).
 
 ## Implementation Choices
 
@@ -45,3 +48,6 @@ This document outlines the process I went through whilst implementing the
   this makes the most sense from a business perspective.
 - Instead of also implementing a server-side application, I have choosen to
   generate the JSON responses such an application would return.
+- I have chosen to use a jQuery search plugin I had lying around from an earlier
+  project rather than write something new or go looking for the most appropriate
+  plugin.
