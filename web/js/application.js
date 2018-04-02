@@ -13,6 +13,7 @@
 
     var oSortMap,
         oStateMap,
+        sFilterTabTemplate,
         sRestaurantItemTemplate,
         sSortItemTemplate,
         $Loading,
@@ -41,6 +42,8 @@
             ;
 
             $RestaurantList.append(p_$List);
+
+            $('.js-tab-filter.is-active').trigger('click');
         });
     }
 
@@ -73,6 +76,27 @@
         });
     }
 
+    function filterTabClickHandler(p_$ActiveItem, p_$TabFilters, p_sListItemSelector) {
+        var sActiveState,$ListItems, $Show;
+
+        $ListItems = $(p_sListItemSelector);
+
+        p_$TabFilters.removeClass('is-active');
+
+        p_$ActiveItem.addClass('is-active');
+
+        sActiveState = p_$ActiveItem.text().trim();
+
+        $Show = $ListItems.has('.card-footer-item:contains(' + sActiveState + ')');
+
+        if (sActiveState === 'All') {
+            $Show = $ListItems;
+        }
+
+        $ListItems.hide();
+        $Show.show();
+    }
+
     function attachtmlListItems(p_$ListItems, p_oSortMap, p_$Attach) {
         var $Previous = p_$Attach;
 
@@ -101,6 +125,24 @@
         return Promise.resolve(p_$ListItems);
     }
 
+    function attachFilterTabs(p_$TabFilters) {
+        $('.js-tab-filter-container').append(p_$TabFilters);
+
+        p_$TabFilters.on('click', function (p_oEvent) {
+            var $ActiveItem;
+
+            $ActiveItem = $(p_oEvent.target);
+
+            if($ActiveItem.is('.restaurant-filters__tab') === false) {
+                $ActiveItem = $ActiveItem.parents('.restaurant-filters__tab');
+            }
+
+            filterTabClickHandler($ActiveItem, p_$TabFilters, '.restaurant-list__item');
+        });
+
+        return Promise.resolve(p_$TabFilters);
+    }
+
     /*/ Add error handling /*/
     window.addEventListener('error', function (p_oError) {
         THA.modal.showError(p_oError, 'Javascript Error');
@@ -109,6 +151,7 @@
     /*/ Retrieve HTML templates /*/
     sRestaurantItemTemplate = $('#restaurant-item-template').html();
     sSortItemTemplate = $('#sortingOptions-item-template').html();
+    sFilterTabTemplate = $('#filter-tab-template').html();
 
     /*/ Set up initial values /*/
     oSortMap = {
@@ -184,6 +227,14 @@
     $Loading = $('.loading-spinner');
     $RestaurantList = $('.restaurant-list');
     $SearchFilter = $('.js-search-filter');
+
+    THA.filterTabs.populate(sFilterTabTemplate, oStateMap).then(
+        function (p_$TabFilters) {
+            attachFilterTabs(p_$TabFilters).then(function (p_$TabFilters) {
+                p_$TabFilters.first().trigger('click');
+            });
+        }
+    );
 
     THA.sortOptions.populate(sSortItemTemplate, oSortMap).then(
         function (p_$ListItems) {

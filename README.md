@@ -28,6 +28,7 @@ This document outlines the process I went through whilst implementing the
 10. Moves HTML into templates for JS re-use.
 11. Connects JS logic to HTML (see [`application.js`](./web/js/application.js))
 12. Adds search functionality (see [`jquery.filterFor.js`](https://gist.github.com/Potherca/c765ec8e09270f25e44e525979c08a8a)).
+13. Adds logic to filter by Restaurant State (see [`filterTabs.js`](web/js/filterTabs.js))
 
 ## Implementation Choices
 
