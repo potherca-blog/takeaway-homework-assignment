@@ -204,7 +204,6 @@
     oStateMap = {
         'all' : {
             color: 'info',
-            icon: 'globe',
             label: 'All'
         },
         'open' :{

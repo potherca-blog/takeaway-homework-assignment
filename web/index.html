@@ -148,7 +148,9 @@
 
   <template id="filter-tab-template">
     <a class="restaurant-filters__tab | js-tab-filter">
+      {{#icon}}
       <span class="icon"><i class="fas fa-{{ icon }}"></i></span>
+      {{/icon}}
       <span>{{ label }}</span>
     </a>
   </template>
