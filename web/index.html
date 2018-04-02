@@ -35,6 +35,7 @@
   <!-- ======================= APPLICATION ASSETS ========================== -->
 
   <script defer src="./js/fetch.js"></script>
+  <script defer src="./js/filterTabs.js"></script>
   <script defer src="./js/list.js"></script>
   <script defer src="./js/modal.js"></script>
   <script defer src="./js/sortOptions.js"></script>
@@ -101,24 +102,7 @@
             </p>
           </div>
 
-          <p class="panel-tabs is-hidden">
-            <a class="is-active">
-              <span class="icon"><i class="fas fa-globe"></i></span>
-              <span>All</span>
-            </a>
-            <a>
-              <span class="icon"><i class="fas fa-check-circle"></i></span>
-              <span>Open</span>
-            </a>
-            <a>
-              <span class="icon"><i class="fas fa-phone"></i></span>
-              <span>Order Ahead</span>
-            </a>
-            <a>
-              <span class="icon"><i class="fas fa-times"></i></span>
-              <span>Closed</span>
-            </a>
-          </p>
+          <p class="panel-tabs | js-tab-filter-container"></p>
 
           <p class="panel-heading">Sort Restaurants</p>
 
@@ -160,6 +144,14 @@
   </span>
 
   <!-- ========================== HTML TEMPLATES =========================== -->
+
+
+  <template id="filter-tab-template">
+    <a class="restaurant-filters__tab | js-tab-filter">
+      <span class="icon"><i class="fas fa-{{ icon }}"></i></span>
+      <span>{{ label }}</span>
+    </a>
+  </template>
 
   <template id="sortingOptions-item-template">
     <a class="panel-block {{#active}}is-active{{/active}}" data-sort-option="{{ key }}">
