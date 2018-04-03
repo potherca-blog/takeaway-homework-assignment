@@ -1,6 +1,18 @@
 (function (window, $, THA){
     'use strict';
 
+    function getTarget(p_oEvent, p_sSelector) {
+        var $ActiveItem;
+
+        $ActiveItem = $(p_oEvent.target);
+
+        if($ActiveItem.is(p_sSelector) === false) {
+            $ActiveItem = $ActiveItem.parents(p_sSelector);
+        }
+
+        return $ActiveItem;
+    }
+
     function updateShowFavoriteButton(p_$ShowFavoritesButton, iFavCount){
         p_$ShowFavoritesButton.find('.js-favorites-count').text(iFavCount);
 
@@ -100,11 +112,7 @@
         p_$List.find('.js-favorite-button').on('click', function (p_oEvent) {
             var $ActiveItem;
 
-            $ActiveItem = $(p_oEvent.target);
-
-            if($ActiveItem.is('.js-favorite-button') === false) {
-                $ActiveItem = $ActiveItem.parents('.js-favorite-button');
-            }
+            $ActiveItem = getTarget(p_oEvent, '.js-favorite-button');
 
             favoriteClickHandler(p_$ShowFavoritesButton, $ActiveItem);
         });
@@ -118,11 +126,7 @@
         p_$TabFilters.on('click', function (p_oEvent) {
             var $ActiveItem;
 
-            $ActiveItem = $(p_oEvent.target);
-
-            if($ActiveItem.is('.restaurant-filters__tab') === false) {
-                $ActiveItem = $ActiveItem.parents('.restaurant-filters__tab');
-            }
+            $ActiveItem = getTarget(p_oEvent, '.restaurant-filters__tab');
 
             filterTabClickHandler(
                 $ActiveItem,
@@ -166,6 +170,9 @@
         },
         filterRestaurantList: function (p_$ListItems, $ShowFavoritesButton) {
             return filterRestaurantList(p_$ListItems, $ShowFavoritesButton);
+        },
+        getTarget: function (p_oEvent, p_sSelector) {
+            return getTarget(p_oEvent, p_sSelector);
         },
         updateShowFavoriteButton: function (p_$ShowFavoritesButton, iFavCount) {
             updateShowFavoriteButton(p_$ShowFavoritesButton, iFavCount);

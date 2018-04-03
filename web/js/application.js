@@ -87,7 +87,8 @@
 
     THA.filterTabs.populate(sFilterTabTemplate, THA.dataMaps.state).then(
         function (p_$TabFilters) {
-            THA.view.attachFilterTabs(p_$TabFilters, $ShowFavoritesButton).then(function (p_$TabFilters) {
+            THA.view.attachFilterTabs(p_$TabFilters, $ShowFavoritesButton)
+            .then(function (p_$TabFilters) {
                 p_$TabFilters.first().trigger('click');
             });
         }
@@ -103,11 +104,7 @@
                 p_$SortOptions.on('click', function (p_oEvent) {
                     var $ActiveItem;
 
-                    $ActiveItem = $(p_oEvent.target);
-
-                    if($ActiveItem.data('sort-option') === undefined) {
-                        $ActiveItem = $ActiveItem.parents('[data-sort-option]');
-                    }
+                    $ActiveItem =  THA.view.getTarget(p_oEvent, '[data-sort-option]');
 
                     fetchRestaurantList(
                             $ActiveItem,
@@ -115,7 +112,10 @@
                             THA.dataMaps.sort,
                             $ShowFavoritesButton
                         ).then(function (){
-                            THA.view.filterRestaurantList($('.restaurant-list__item'), $ShowFavoritesButton);
+                            THA.view.filterRestaurantList(
+                                $('.restaurant-list__item'),
+                                $ShowFavoritesButton
+                            );
                         })
                     ;
                 });
