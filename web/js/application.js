@@ -21,7 +21,7 @@
         $ShowFavoritesButton
     ;
 
-    function fetchRestaurantList(p_$ActiveItem, p_oSortMap) {
+    function fetchRestaurantList(p_$ActiveItem) {
         var sActiveItem;
 
         sActiveItem = p_$ActiveItem.data('sort-option');
@@ -36,8 +36,7 @@
                 return THA.list.populate(
                     sRestaurantItemTemplate,
                     p_oData.restaurants,
-                    p_oSortMap,
-                    THA.dataMaps.state
+                    THA.dataMaps
                 );
             },
             THA.view.displayAjaxError
@@ -104,7 +103,7 @@
 
             $ActiveItem.addClass('is-active');
 
-            fetchRestaurantList($ActiveItem, THA.dataMaps.sort).then(function (){
+            fetchRestaurantList($ActiveItem).then(function (){
                 THA.view.filterRestaurantList($('.restaurant-list__item'));
             });
         });

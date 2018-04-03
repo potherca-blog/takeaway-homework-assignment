@@ -3,7 +3,7 @@
 
     window.THA = window.THA || {};
 
-    function populateList(p_sTemplate, p_aItems, p_oSortMap, p_oStateMap) {
+    function populateList(p_sTemplate, p_aItems, p_oDataMap) {
         var oData, aListItems, aSortItems, sRendered, $ListItems;
 
         aListItems = [];
@@ -14,7 +14,7 @@
 
             aSortItems = [];
 
-            $.each(p_oSortMap, function (p_sKey, p_iValue){
+            $.each(p_oDataMap.sort, function (p_sKey, p_iValue){
                 var oItem;
 
                 oItem = p_iValue;
@@ -26,7 +26,7 @@
 
             oData = {
                 name: p_oItem.name,
-                status: p_oStateMap[p_oItem.status],
+                status: p_oDataMap.state[p_oItem.status],
                 sortItems: aSortItems
             };
 
@@ -42,8 +42,8 @@
     }
 
     window.THA.list = {
-        populate: function (p_sTemplate, p_aItems, p_oSortMap, p_oStateMap) {
-            return populateList(p_sTemplate, p_aItems, p_oSortMap, p_oStateMap);
+        populate: function (p_sTemplate, p_aItems, p_oDataMap) {
+            return populateList(p_sTemplate, p_aItems, p_oDataMap);
         },
     };
 }(window, jQuery, Mustache));
