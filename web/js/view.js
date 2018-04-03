@@ -78,10 +78,9 @@
 
     function filterTabClickHandler(
         p_$ActiveItem,
-        p_$TabFilters,
         p_$ListItems
     ) {
-        p_$TabFilters.removeClass('restaurant-filters__tab--is-active');
+        $TabFilters.removeClass('restaurant-filters__tab--is-active');
 
         p_$ActiveItem.addClass('restaurant-filters__tab--is-active');
 
@@ -121,22 +120,21 @@
         return Promise.resolve(p_$List);
     }
 
-    function attachFilterTabs(p_$TabFilters) {
-        $('.js-tab-filter-container').append(p_$TabFilters);
+    function attachFilterTabs() {
+        $('.js-tab-filter-container').append($TabFilters);
 
-        p_$TabFilters.on('click', function (p_oEvent) {
+        $TabFilters.on('click', function (p_oEvent) {
             var $ActiveItem;
 
             $ActiveItem = getTarget(p_oEvent, '.restaurant-filters__tab');
 
             filterTabClickHandler(
                 $ActiveItem,
-                p_$TabFilters,
                 $('.restaurant-list__item')
             );
         });
 
-        return Promise.resolve(p_$TabFilters);
+        return Promise.resolve($TabFilters);
     }
 
     function attachtSortOptions(p_$SortOptions, p_oSortMap, p_$Attach) {
@@ -156,8 +154,8 @@
     }
 
     window.THA.view = {
-        attachFilterTabs: function (p_$TabFilters) {
-            return attachFilterTabs(p_$TabFilters);
+        attachFilterTabs: function () {
+            return attachFilterTabs();
         },
         attachtSortOptions: function (p_$SortOptions, p_oSortMap, p_$Attach) {
             return attachtSortOptions(p_$SortOptions, p_oSortMap, p_$Attach);
@@ -177,8 +175,9 @@
         updateShowFavoriteButton: function (iFavCount) {
             updateShowFavoriteButton(iFavCount);
         },
-        setup: function (p_$ShowFavoritesButton) {
+        setup: function (p_$ShowFavoritesButton, p_$TabFilters) {
             $ShowFavoritesButton = p_$ShowFavoritesButton;
+            $TabFilters = p_$TabFilters;
         },
     };
 }(window, jQuery, window.THA));

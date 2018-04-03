@@ -87,17 +87,12 @@
         THA.filterTabs.populate(sFilterTabTemplate, THA.dataMaps.state),
         THA.sortOptions.populate(sSortItemTemplate, THA.dataMaps.sort)
     ]).then(function(p_aPromiseValues) {
-        console.log(p_aPromiseValues);
         var $TabFilters = p_aPromiseValues.shift();
         var $SortOptions = p_aPromiseValues.shift();
 
-        THA.view.setup($ShowFavoritesButton);
+        THA.view.setup($ShowFavoritesButton, $TabFilters);
 
-        THA.view.attachFilterTabs($TabFilters).then(
-            function (p_$TabFilters) {
-                p_$TabFilters.first().trigger('click');
-            }
-        );
+        THA.view.attachFilterTabs();
 
         THA.view.attachtSortOptions(
             $SortOptions,
@@ -112,7 +107,7 @@
                 fetchRestaurantList(
                         $ActiveItem,
                         p_$SortOptions,
-                        THA.dataMaps.sort,
+                        THA.dataMaps.sort
                     ).then(function (){
                         THA.view.filterRestaurantList(
                             $('.restaurant-list__item')
@@ -124,9 +119,9 @@
             p_$SortOptions.first().trigger('click');
         });
 
+        /*/ Set up initial state /*/
         THA.view.updateShowFavoriteButton(THA.favorites.length());
-
-
+        $TabFilters.first().trigger('click');
     });
 
 }(window, jQuery, THA));
