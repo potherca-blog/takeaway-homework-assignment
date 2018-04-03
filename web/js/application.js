@@ -22,8 +22,6 @@
         $ShowFavoritesButton
     ;
 
-    // @FIXME: Favorites need to be sorted to the front of the queue
-
     function filterRestaurantList (p_$ListItems) {
         var bShowFavorites, sActiveState, $Show;
 
@@ -147,7 +145,11 @@
             },
             displayAjaxError
         ).then(function(p_$List){
+
             $RestaurantList.append(p_$List);
+
+            /*/ Move favorites to the top of the list /*/
+            $RestaurantList.prepend(p_$List.has('[data-favorite="true"]'));
 
             /*/ Add search/filter functionality /*/
             $SearchFilter.filterFor('.restaurant-list__item',{
