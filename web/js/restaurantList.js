@@ -20,7 +20,7 @@
         );
     }
 
-    window.THA.fetch = {
+    window.THA.restaurantList = {
         fetchList: function (p_sActiveItem, p_fBeforeSend) {
             return fetchList(p_sActiveItem, p_fBeforeSend);
         },

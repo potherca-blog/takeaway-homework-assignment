@@ -133,8 +133,7 @@
 
         sActiveItem = p_$ActiveItem.data('sort-option');
 
-        /* @TODO: Rename THA.fetch to THA.RestaurantList  */
-        return THA.fetch.fetchList(sActiveItem, function () {
+        return THA.restaurantList.fetchList(sActiveItem, function () {
             $Loading.show();
             /*/ Clear out current list and search value /*/
             $RestaurantList.html('');
