@@ -12,6 +12,9 @@ This document outlines the process I went through whilst implementing the
 
 To view the end result visit: [https://pother.ca/takeaway-homework-assignment/web/](https://pother.ca/takeaway-homework-assignment/web/)
 
+Based on my [my critique](./docs/critique.md) of the assignment I have created [a
+version of the assigment text which offers some improvements](./docs/assignment.md).
+
 ## Implementation Steps taken
 
 1. Dowload, unzip and read the assignment (see [my critique](./docs/critique.md)).
