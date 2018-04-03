@@ -21,7 +21,7 @@
         $ShowFavoritesButton
     ;
 
-    function fetchRestaurantList(p_$ActiveItem, p_$ListItems, p_oSortMap, p_$ShowFavoritesButton) {
+    function fetchRestaurantList(p_$ActiveItem, p_$ListItems, p_oSortMap) {
         var sActiveItem;
 
         p_$ListItems.removeClass('is-active');
@@ -46,7 +46,7 @@
             },
             THA.view.displayAjaxError
         ).then(function(p_$List) {
-            return THA.view.decorateListItem(p_$List, sActiveItem, p_$ShowFavoritesButton);
+            return THA.view.decorateListItem(p_$List, sActiveItem);
         }).then(function(p_$List) {
 
             $RestaurantList.append(p_$List);
@@ -80,50 +80,55 @@
 
     $ShowFavoritesButton.on('click', function () {
         $ShowFavoritesButton.toggleClass('show-favorites--is-active');
-        THA.view.filterRestaurantList($('.restaurant-list__item'), $ShowFavoritesButton);
+        THA.view.filterRestaurantList($('.restaurant-list__item'));
     });
 
-    THA.view.updateShowFavoriteButton($ShowFavoritesButton, THA.favorites.length());
+    Promise.all([
+        THA.filterTabs.populate(sFilterTabTemplate, THA.dataMaps.state),
+        THA.sortOptions.populate(sSortItemTemplate, THA.dataMaps.sort)
+    ]).then(function(p_aPromiseValues) {
+        console.log(p_aPromiseValues);
+        var $TabFilters = p_aPromiseValues.shift();
+        var $SortOptions = p_aPromiseValues.shift();
 
-    THA.filterTabs.populate(sFilterTabTemplate, THA.dataMaps.state).then(
-        function (p_$TabFilters) {
-            THA.view.attachFilterTabs(p_$TabFilters, $ShowFavoritesButton)
-            .then(function (p_$TabFilters) {
+        THA.view.setup($ShowFavoritesButton);
+
+        THA.view.attachFilterTabs($TabFilters).then(
+            function (p_$TabFilters) {
                 p_$TabFilters.first().trigger('click');
+            }
+        );
+
+        THA.view.attachtSortOptions(
+            $SortOptions,
+            THA.dataMaps.sort,
+            $('.restaurant-filters .panel-heading')
+        ).then(function (p_$SortOptions) {
+            p_$SortOptions.on('click', function (p_oEvent) {
+                var $ActiveItem;
+
+                $ActiveItem =  THA.view.getTarget(p_oEvent, '[data-sort-option]');
+
+                fetchRestaurantList(
+                        $ActiveItem,
+                        p_$SortOptions,
+                        THA.dataMaps.sort,
+                    ).then(function (){
+                        THA.view.filterRestaurantList(
+                            $('.restaurant-list__item')
+                        );
+                    })
+                ;
             });
-        }
-    );
 
-    THA.sortOptions.populate(sSortItemTemplate, THA.dataMaps.sort).then(
-        function (p_$SortOptions) {
-            THA.view.attachtSortOptions(
-                p_$SortOptions,
-                THA.dataMaps.sort,
-                $('.restaurant-filters .panel-heading')
-            ).then(function (p_$SortOptions) {
-                p_$SortOptions.on('click', function (p_oEvent) {
-                    var $ActiveItem;
+            p_$SortOptions.first().trigger('click');
+        });
 
-                    $ActiveItem =  THA.view.getTarget(p_oEvent, '[data-sort-option]');
+        THA.view.updateShowFavoriteButton(THA.favorites.length());
 
-                    fetchRestaurantList(
-                            $ActiveItem,
-                            p_$SortOptions,
-                            THA.dataMaps.sort,
-                            $ShowFavoritesButton
-                        ).then(function (){
-                            THA.view.filterRestaurantList(
-                                $('.restaurant-list__item'),
-                                $ShowFavoritesButton
-                            );
-                        })
-                    ;
-                });
 
-                p_$SortOptions.first().trigger('click');
-            });
-        }
-    );
+    });
+
 }(window, jQuery, THA));
 
 /*EOF*/

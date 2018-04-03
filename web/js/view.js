@@ -1,6 +1,8 @@
 (function (window, $, THA){
     'use strict';
 
+    var $ShowFavoritesButton, $SortOptions, $TabFilters;
+
     function getTarget(p_oEvent, p_sSelector) {
         var $ActiveItem;
 
@@ -13,13 +15,13 @@
         return $ActiveItem;
     }
 
-    function updateShowFavoriteButton(p_$ShowFavoritesButton, iFavCount){
-        p_$ShowFavoritesButton.find('.js-favorites-count').text(iFavCount);
+    function updateShowFavoriteButton(iFavCount){
+        $ShowFavoritesButton.find('.js-favorites-count').text(iFavCount);
 
         if (iFavCount > 0) {
-            p_$ShowFavoritesButton.show();
+            $ShowFavoritesButton.show();
         } else {
-            p_$ShowFavoritesButton.hide();
+            $ShowFavoritesButton.hide();
         }
     }
 
@@ -31,7 +33,7 @@
         }, 'AJAX Error');
     }
 
-    function favoriteClickHandler(p_$ShowFavoritesButton, p_$ActiveItem) {
+    function favoriteClickHandler(p_$ActiveItem) {
         var aFavorites, bActive, sRestaurant;
 
         sRestaurant = p_$ActiveItem.data('restaurant-name');
@@ -52,13 +54,13 @@
 
         p_$ActiveItem.attr('data-favorite', bActive);
 
-        updateShowFavoriteButton(p_$ShowFavoritesButton, aFavorites.length);
+        updateShowFavoriteButton(aFavorites.length);
     }
 
-    function filterRestaurantList (p_$ListItems, p_$ShowFavoritesButton) {
+    function filterRestaurantList (p_$ListItems) {
         var bShowFavorites, sActiveState, $Show;
 
-        bShowFavorites = p_$ShowFavoritesButton.hasClass('show-favorites--is-active');
+        bShowFavorites = $ShowFavoritesButton.hasClass('show-favorites--is-active');
         sActiveState = $('.restaurant-filters__tab--is-active').text().trim();
 
         $Show = p_$ListItems;
@@ -77,14 +79,13 @@
     function filterTabClickHandler(
         p_$ActiveItem,
         p_$TabFilters,
-        p_$ListItems,
-        p_$ShowFavoritesButton
+        p_$ListItems
     ) {
         p_$TabFilters.removeClass('restaurant-filters__tab--is-active');
 
         p_$ActiveItem.addClass('restaurant-filters__tab--is-active');
 
-        filterRestaurantList(p_$ListItems, p_$ShowFavoritesButton);
+        filterRestaurantList(p_$ListItems);
     }
 
     function markFavorites(p_$RestaurantList, p_aFavorites){
@@ -98,7 +99,7 @@
         }
     }
 
-    function decorateListItem(p_$List, p_sActiveItem, p_$ShowFavoritesButton) {
+    function decorateListItem(p_$List, p_sActiveItem) {
         /*/ Mark active sort-options as active /*/
         p_$List.find('[data-sort-option="' + p_sActiveItem + '"]')
             .find('.sort-option__value')
@@ -114,13 +115,13 @@
 
             $ActiveItem = getTarget(p_oEvent, '.js-favorite-button');
 
-            favoriteClickHandler(p_$ShowFavoritesButton, $ActiveItem);
+            favoriteClickHandler($ActiveItem);
         });
 
         return Promise.resolve(p_$List);
     }
 
-    function attachFilterTabs(p_$TabFilters, p_$ShowFavoritesButton) {
+    function attachFilterTabs(p_$TabFilters) {
         $('.js-tab-filter-container').append(p_$TabFilters);
 
         p_$TabFilters.on('click', function (p_oEvent) {
@@ -131,8 +132,7 @@
             filterTabClickHandler(
                 $ActiveItem,
                 p_$TabFilters,
-                $('.restaurant-list__item'),
-                p_$ShowFavoritesButton
+                $('.restaurant-list__item')
             );
         });
 
@@ -156,26 +156,29 @@
     }
 
     window.THA.view = {
-        attachFilterTabs: function (p_$TabFilters, p_$ShowFavoritesButton) {
-            return attachFilterTabs(p_$TabFilters, p_$ShowFavoritesButton);
+        attachFilterTabs: function (p_$TabFilters) {
+            return attachFilterTabs(p_$TabFilters);
         },
         attachtSortOptions: function (p_$SortOptions, p_oSortMap, p_$Attach) {
             return attachtSortOptions(p_$SortOptions, p_oSortMap, p_$Attach);
         },
-        decorateListItem: function (p_$List, p_sActiveItem, p_$ShowFavoritesButton) {
-            return decorateListItem(p_$List, p_sActiveItem, p_$ShowFavoritesButton);
+        decorateListItem: function (p_$List, p_sActiveItem) {
+            return decorateListItem(p_$List, p_sActiveItem);
         },
         displayAjaxError: function (p_oXHR, p_sStatus, p_sError) {
             return displayAjaxError(p_oXHR, p_sStatus, p_sError);
         },
-        filterRestaurantList: function (p_$ListItems, $ShowFavoritesButton) {
-            return filterRestaurantList(p_$ListItems, $ShowFavoritesButton);
+        filterRestaurantList: function (p_$ListItems) {
+            return filterRestaurantList(p_$ListItems);
         },
         getTarget: function (p_oEvent, p_sSelector) {
             return getTarget(p_oEvent, p_sSelector);
         },
-        updateShowFavoriteButton: function (p_$ShowFavoritesButton, iFavCount) {
-            updateShowFavoriteButton(p_$ShowFavoritesButton, iFavCount);
+        updateShowFavoriteButton: function (iFavCount) {
+            updateShowFavoriteButton(iFavCount);
+        },
+        setup: function (p_$ShowFavoritesButton) {
+            $ShowFavoritesButton = p_$ShowFavoritesButton;
         },
     };
 }(window, jQuery, window.THA));
