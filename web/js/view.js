@@ -21,7 +21,10 @@
         if (iFavCount > 0) {
             $ShowFavoritesButton.show();
         } else {
-            $ShowFavoritesButton.hide();
+            $ShowFavoritesButton
+                .hide()
+                .removeClass('show-favorites--is-active')
+            ;
         }
     }
 
