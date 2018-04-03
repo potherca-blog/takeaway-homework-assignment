@@ -79,10 +79,7 @@
         $Show.show();
     }
 
-    function filterTabClickHandler(
-        p_$ActiveItem,
-        p_$ListItems
-    ) {
+    function filterTabClickHandler(p_$ActiveItem, p_$ListItems) {
         $TabFilters.removeClass('restaurant-filters__tab--is-active');
 
         p_$ActiveItem.addClass('restaurant-filters__tab--is-active');
