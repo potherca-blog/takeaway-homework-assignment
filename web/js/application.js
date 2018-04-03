@@ -21,12 +21,8 @@
         $ShowFavoritesButton
     ;
 
-    function fetchRestaurantList(p_$ActiveItem, p_$ListItems, p_oSortMap) {
+    function fetchRestaurantList(p_$ActiveItem, p_oSortMap) {
         var sActiveItem;
-
-        p_$ListItems.removeClass('is-active');
-
-        p_$ActiveItem.addClass('is-active');
 
         sActiveItem = p_$ActiveItem.data('sort-option');
 
@@ -90,37 +86,32 @@
         var $TabFilters = p_aPromiseValues.shift();
         var $SortOptions = p_aPromiseValues.shift();
 
-        THA.view.setup($ShowFavoritesButton, $TabFilters);
+        THA.view.setup($ShowFavoritesButton, $SortOptions, $TabFilters);
 
         THA.view.attachFilterTabs();
 
         THA.view.attachtSortOptions(
-            $SortOptions,
             THA.dataMaps.sort,
             $('.restaurant-filters .panel-heading')
-        ).then(function (p_$SortOptions) {
-            p_$SortOptions.on('click', function (p_oEvent) {
-                var $ActiveItem;
+        );
 
-                $ActiveItem =  THA.view.getTarget(p_oEvent, '[data-sort-option]');
+        $SortOptions.on('click', function (p_oEvent) {
+            var $ActiveItem;
 
-                fetchRestaurantList(
-                        $ActiveItem,
-                        p_$SortOptions,
-                        THA.dataMaps.sort
-                    ).then(function (){
-                        THA.view.filterRestaurantList(
-                            $('.restaurant-list__item')
-                        );
-                    })
-                ;
+            $ActiveItem =  THA.view.getTarget(p_oEvent, '[data-sort-option]');
+
+            $SortOptions.removeClass('is-active');
+
+            $ActiveItem.addClass('is-active');
+
+            fetchRestaurantList($ActiveItem, THA.dataMaps.sort).then(function (){
+                THA.view.filterRestaurantList($('.restaurant-list__item'));
             });
-
-            p_$SortOptions.first().trigger('click');
         });
 
         /*/ Set up initial state /*/
         THA.view.updateShowFavoriteButton(THA.favorites.length());
+        $SortOptions.first().trigger('click');
         $TabFilters.first().trigger('click');
     });
 

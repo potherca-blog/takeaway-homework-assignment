@@ -133,14 +133,12 @@
                 $('.restaurant-list__item')
             );
         });
-
-        return Promise.resolve($TabFilters);
     }
 
-    function attachtSortOptions(p_$SortOptions, p_oSortMap, p_$Attach) {
+    function attachtSortOptions(p_oSortMap, p_$Attach) {
         var $Previous = p_$Attach;
 
-        p_$SortOptions.each(function (p_iIndex, p_oSortOption){
+        $SortOptions.each(function (p_iIndex, p_oSortOption){
             var $SortOption;
 
             $SortOption = $(p_oSortOption);
@@ -149,16 +147,14 @@
 
             $Previous = $SortOption;
         });
-
-        return Promise.resolve(p_$SortOptions);
     }
 
     window.THA.view = {
         attachFilterTabs: function () {
             return attachFilterTabs();
         },
-        attachtSortOptions: function (p_$SortOptions, p_oSortMap, p_$Attach) {
-            return attachtSortOptions(p_$SortOptions, p_oSortMap, p_$Attach);
+        attachtSortOptions: function (p_oSortMap, p_$Attach) {
+            return attachtSortOptions(p_oSortMap, p_$Attach);
         },
         decorateListItem: function (p_$List, p_sActiveItem) {
             return decorateListItem(p_$List, p_sActiveItem);
@@ -175,8 +171,9 @@
         updateShowFavoriteButton: function (iFavCount) {
             updateShowFavoriteButton(iFavCount);
         },
-        setup: function (p_$ShowFavoritesButton, p_$TabFilters) {
+        setup: function (p_$ShowFavoritesButton, p_$SortOptions, p_$TabFilters) {
             $ShowFavoritesButton = p_$ShowFavoritesButton;
+            $SortOptions = p_$SortOptions;
             $TabFilters = p_$TabFilters;
         },
     };
