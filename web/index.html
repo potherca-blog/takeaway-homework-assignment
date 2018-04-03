@@ -68,9 +68,13 @@
 
       <div class="navbar-end">
           <p class="control navbar-item">
-            <a class="button is-hidden">
-              <span>Favorites</span>
+            <a
+              class="button | js-show-favorites | show-favorites"
+              title="Show favorites"
+            >
               <span class="icon"><i class="fas fa-bookmark"></i></span>
+              <span>Only Show Favorites</span>&nbsp;
+              <span class="tag is-rounded | js-favorites-count | show-favorites__count">0</span>
             </a>
           </p>
           <p class="control navbar-item">
@@ -116,12 +120,6 @@
           <p class="panel-tabs | js-tab-filter-container"></p>
 
           <p class="panel-heading">Sort Restaurants</p>
-
-          <label class="panel-block is-hidden">
-            <input type="checkbox" />
-            <span>Only show Favorites</span>
-            <span class="icon"><i class="far fa-bookmark"></i></span>
-          </label>
 
           <div class="panel-block is-hidden">
             <button class="button is-link is-outlined is-fullwidth">
@@ -209,11 +207,11 @@
           data-restaurant-name="{{ name }}"
           data-favorite="false"
         >
-          <span>Favorite</span>
           <span class="icon">
             <i class="far fa-bookmark | favorite-button__icon--is-not-favorite"></i>
             <i class="fas fa-bookmark | favorite-button__icon--is-favorite"></i>
           </span>
+          <span>Favorite</span>
         </a>
       </footer>
     </article>

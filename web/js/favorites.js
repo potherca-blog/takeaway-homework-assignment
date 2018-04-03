@@ -20,7 +20,12 @@
     }
 
     window.THA.favorites = {
-        'get': getFavorites,
+        'length': function () {
+            return getFavorites().length;
+        },
+        'get': function () {
+            return getFavorites();
+        },
         'set': function(p_aFavorites){
             window.localStorage.setItem(
                 sStorageKey,

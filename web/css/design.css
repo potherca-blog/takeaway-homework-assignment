@@ -4,13 +4,16 @@
     1. General Declarations
 
     2. Page Header
+
         2.1. Page Header Branding
+        2.2. Show Favorites Button
 
     3. Main Content
 
         3.1. Restaurants Filters
 
         3.2. Restaurants List
+
           3.2.1 Sort Options
 
     4. Page Footer
@@ -48,6 +51,17 @@ html {
   color: white;
   font-weight: bold;
 }
+
+/* -------( Show Favorites Button )------------------------------------------- */
+.show-favorites--is-active {
+  background-color: var(--color-brand);
+}
+
+.show-favorites__count {
+  background-color: var(--color-background-dark) !important;
+  color: var(--color-text-light) !important;
+}
+
 
 /* ======( Main Content )==================================================== */
 
