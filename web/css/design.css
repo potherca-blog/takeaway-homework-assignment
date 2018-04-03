@@ -62,7 +62,6 @@ html {
   color: var(--color-text-light) !important;
 }
 
-
 /* ======( Main Content )==================================================== */
 
 /* -------( Restaurants Filters )-------------------------------------------- */
@@ -74,15 +73,14 @@ html {
 
 /* .......( Restaurants Filter Tabs )....................................... */
 .restaurant-filters__tab {
-    border-left-color: var(--color-background-dark);
-    color: var(--color-dark);
+  border-left-color: var(--color-background-dark);
+  color: var(--color-dark);
 }
 
 .restaurant-filters__tab:hover,
 .restaurant-filters__tab--is-active {
   color: var(--color-action);
 }
-
 
 /* .......( Sort Options )................................................... */
 .sort-option__value--is-active {
