@@ -10,6 +10,8 @@
 This document outlines the process I went through whilst implementing the
 "homework" assignment I received from Takeaway.
 
+To view the end result visit: [https://pother.ca/takeaway-homework-assignment/web/](https://pother.ca/takeaway-homework-assignment/web/)
+
 ## Implementation Steps taken
 
 1. Dowload, unzip and read the assignment (see [my critique](./docs/critique.md)).
@@ -28,7 +30,8 @@ This document outlines the process I went through whilst implementing the
 10. Moves HTML into templates for JS re-use.
 11. Connects JS logic to HTML (see [`application.js`](./web/js/application.js))
 12. Adds search functionality (see [`jquery.filterFor.js`](https://gist.github.com/Potherca/c765ec8e09270f25e44e525979c08a8a)).
-13. Adds logic to filter by Restaurant State (see [`filterTabs.js`](web/js/filterTabs.js))
+13. Adds logic to filter by Restaurant State (see [`filterTabs.js`](./web/js/filterTabs.js))
+14. Adds logic to mark restaurants as favorite. (see [`favorites.js`](./web/js/favorites.js))
 
 ## Implementation Choices
 
@@ -43,12 +46,14 @@ This document outlines the process I went through whilst implementing the
   selector, the pipe charater is used as a namespace separator.
 - I have chosen to us BEM as the naming scheme for CSS classes.
 - As part of the sample application branding I have added a logo.
-- Thuisbezorgd.nl uses jQuery `1.12.4`. I have choosen to use jQuery too, instead
+- Thuisbezorgd.nl uses jQuery `1.12.4`. I have chosen to use jQuery too, instead
   of vanilla JS. I did choose to use a newer version.
 - I have chosen to have the restaurants sorted by "Top Restaurant" by default as
   this makes the most sense from a business perspective.
-- Instead of also implementing a server-side application, I have choosen to
+- Instead of also implementing a server-side application, I have chosen to
   generate the JSON responses such an application would return.
 - I have chosen to use a jQuery search plugin I had lying around from an earlier
   project rather than write something new or go looking for the most appropriate
   plugin.
+- As this application does not have a backend, I have chosen to store favorites
+  in the browsers LocalStorage.
