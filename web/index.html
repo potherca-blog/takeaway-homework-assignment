@@ -69,12 +69,12 @@
       <div class="navbar-end">
           <p class="control navbar-item">
             <a
-              class="button | js-show-favorites | show-favorites"
+              class="button | show-favorites js-show-favorites"
               title="Show favorites"
             >
               <span class="icon"><i class="fas fa-bookmark"></i></span>
               <span>Only Show Favorites</span>&nbsp;
-              <span class="tag is-rounded | js-favorites-count | show-favorites__count">0</span>
+              <span class="tag is-rounded | show-favorites__count js-favorites-count">0</span>
             </a>
           </p>
           <p class="control navbar-item">
@@ -203,7 +203,7 @@
           <span>{{ status.label }}</span>
         </p>
         <a
-          class="card-footer-item button | js-favorite-button | favorite-button"
+          class="card-footer-item button | favorite-button js-favorite-button"
           data-restaurant-name="{{ name }}"
           data-favorite="false"
         >
