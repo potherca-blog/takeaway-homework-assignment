@@ -10,7 +10,7 @@
 This document outlines the process I went through whilst implementing the
 "homework" assignment I received from Takeaway.
 
-To view the end result visit: [https://pother.ca/takeaway-homework-assignment/web/](https://pother.ca/takeaway-homework-assignment/web/)
+To view the end result visit: [https://blog.pother.ca/takeaway-homework-assignment/web/](https://blog.pother.ca/takeaway-homework-assignment/web/)
 
 Based on my [my critique](./docs/critique.md) of the assignment I have created [a
 version of the assigment text which offers some improvements](./docs/assignment.md).
